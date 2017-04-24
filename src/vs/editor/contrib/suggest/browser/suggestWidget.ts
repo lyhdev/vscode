@@ -792,6 +792,7 @@ export class SuggestWidget implements IContentWidget, IDelegate<ICompletionItem>
 
 	private updateWidgetHeight(): number {
 		let height = 0;
+		let expandToSide = autoExpandToSide(this.editor);
 
 		if (this.state === State.Empty || this.state === State.Loading) {
 			height = this.unfocusedHeight;
@@ -801,13 +802,14 @@ export class SuggestWidget implements IContentWidget, IDelegate<ICompletionItem>
 			height = focusHeight;
 
 			const suggestionCount = (this.list.contentHeight - focusHeight) / this.unfocusedHeight;
-			height += Math.min(suggestionCount, 11) * this.unfocusedHeight;
+			const minSuggestionCount = expandToSide ? 11 : 4;
+			height += Math.min(suggestionCount, minSuggestionCount) * this.unfocusedHeight;
 		}
 
 		this.element.style.lineHeight = `${this.unfocusedHeight}px`;
 		this.listElement.style.height = `${height}px`;
 
-		if (autoExpandToSide(this.editor)) {
+		if (expandToSide) {
 			addClass(this.element, 'side-by-side');
 		} else {
 			removeClass(this.element, 'side-by-side');
