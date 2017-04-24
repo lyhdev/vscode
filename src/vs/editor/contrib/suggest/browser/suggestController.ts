@@ -219,7 +219,7 @@ export class SuggestController implements IEditorContribution {
 	cancelSuggestWidget(): void {
 		if (this._widget) {
 			this._model.cancel();
-			this._widget.hideDetailsOrHideWidget();
+			this._widget.hideWidget();
 		}
 	}
 
@@ -256,12 +256,6 @@ export class SuggestController implements IEditorContribution {
 	selectFirstSuggestion(): void {
 		if (this._widget) {
 			this._widget.selectFirst();
-		}
-	}
-
-	toggleSuggestionDetails(): void {
-		if (this._widget) {
-			this._widget.toggleDetails();
 		}
 	}
 }
@@ -402,17 +396,5 @@ CommonEditorRegistry.registerEditorCommand(new SuggestCommand({
 		weight: weight,
 		kbExpr: EditorContextKeys.textFocus,
 		primary: KeyCode.Home
-	}
-}));
-
-CommonEditorRegistry.registerEditorCommand(new SuggestCommand({
-	id: 'toggleSuggestionDetails',
-	precondition: SuggestContext.Visible,
-	handler: x => x.toggleSuggestionDetails(),
-	kbOpts: {
-		weight: weight,
-		kbExpr: EditorContextKeys.textFocus,
-		primary: KeyMod.CtrlCmd | KeyCode.Space,
-		mac: { primary: KeyMod.WinCtrl | KeyCode.Space }
 	}
 }));

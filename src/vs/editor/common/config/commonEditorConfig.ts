@@ -325,6 +325,7 @@ class InternalEditorOptionsHelper {
 			wordBasedSuggestions: opts.wordBasedSuggestions,
 			suggestFontSize: opts.suggestFontSize,
 			suggestLineHeight: opts.suggestLineHeight,
+			suggestAutoExpandToSide: opts.suggestAutoExpandToSide,
 			selectionHighlight: toBoolean(opts.selectionHighlight),
 			occurrencesHighlight: toBoolean(opts.occurrencesHighlight),
 			codeLens: opts.referenceInfos && opts.codeLens,
@@ -852,6 +853,11 @@ const editorConfiguration: IConfigurationNode = {
 			'default': 0,
 			'minimum': 0,
 			'description': nls.localize('suggestLineHeight', "Line height for the suggest widget")
+		},
+		'editor.suggestAutoExpandToSide': {
+			'type': 'boolean',
+			'default': DefaultConfig.editor.suggestAutoExpandToSide,
+			'description': nls.localize('suggestAutoExpandToSide', "Controls whether docs for the suggestion item in focus expands to the side or below the suggestion list.")
 		},
 		'editor.selectionHighlight': {
 			'type': 'boolean',

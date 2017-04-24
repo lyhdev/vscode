@@ -9,6 +9,10 @@
 	width: 438px;
 }
 
+.monaco-editor .suggest-widget.side-by-side {
+	width: 660px;
+}
+
 .monaco-editor .suggest-widget.visible {
 	-webkit-transition: left .05s ease-in-out;
 	-moz-transition: left .05s ease-in-out;
@@ -24,6 +28,12 @@
 .monaco-editor .suggest-widget > .tree {
 	height: 100%;
 	width: 100%;
+	box-sizing: border-box;
+}
+
+.monaco-editor .suggest-widget.suggest-widget.side-by-side > .tree {
+	width: 40%;
+	float: left;
 }
 
 .monaco-editor .suggest-widget .monaco-list .monaco-list-row {
@@ -160,8 +170,7 @@
 }
 
 .monaco-editor .suggest-widget .details {
-	height: 100%;
-	box-sizing: border-box;
+	max-height: 216px;
 	display: flex;
 	flex-direction: column;
 	cursor: default;
